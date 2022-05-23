@@ -13,12 +13,6 @@ class MagnetBBC
     // hook integrate_additional_bbc /sources/subs/BBC/ParserWrapper.php
     static public function integrate_additional_bbc(&$additional_bbc)
     {
-        global  $modSettings;
-
-        if (empty($modSettings['enableBBC'])) {
-            return;
-        }
-
         $ary = [[
                 // [tag]unparsed content[/tag]
                 BBC\Codes::ATTR_TAG => 'magnet',

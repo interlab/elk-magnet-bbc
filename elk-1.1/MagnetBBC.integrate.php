@@ -19,23 +19,23 @@ class MagnetBBC
                 BBC\Codes::ATTR_TYPE => BBC\Codes::TYPE_UNPARSED_CONTENT,
                 BBC\Codes::ATTR_CONTENT => '<img src="__magnet_ico__" />&nbsp;<a href="$1" class="new_win">__magnet_name__</a>',
                 BBC\Codes::ATTR_VALIDATE => function(&$tag, &$data, $disabled) {
-                        global $settings;
-                        if (!preg_match('~^[a-z0-9]{40}$~i', $data)) {
-                            $tag[BBC\Codes::ATTR_CONTENT] = '[magnet]$1[/magnet]';
-                            return;
-                        }
-                        $data = strtr($data, ['<br />' => '']);
-                        // $magnet_ico = $settings['images_url'] . '/bbc/' . 'magnet.png';
-                        $magnet_ico = $settings['default_images_url'] . '/bbc/' . 'magnet.png';
-                        $magnet_name = $data;
-                        $ml = 'magnet:?xt=urn:btih:';
-                        // if (strpos($data, $ml) !== 0) {
-                        $data = $ml . $data;
-                        // }
-                        $tag[BBC\Codes::ATTR_CONTENT] = strtr($tag[BBC\Codes::ATTR_CONTENT], [
-                            '__magnet_ico__' => $magnet_ico,
-                            '__magnet_name__' => $magnet_name,
-                        ]);
+                    global $settings;
+                    if (!preg_match('~^[a-z0-9]{40}$~i', $data)) {
+                        $tag[BBC\Codes::ATTR_CONTENT] = '[magnet]$1[/magnet]';
+                        return;
+                    }
+                    $data = strtr($data, ['<br />' => '']);
+                    // $magnet_ico = $settings['images_url'] . '/bbc/' . 'magnet.png';
+                    $magnet_ico = $settings['default_images_url'] . '/bbc/' . 'magnet.png';
+                    $magnet_name = $data;
+                    $ml = 'magnet:?xt=urn:btih:';
+                    // if (strpos($data, $ml) !== 0) {
+                    $data = $ml . $data;
+                    // }
+                    $tag[BBC\Codes::ATTR_CONTENT] = strtr($tag[BBC\Codes::ATTR_CONTENT], [
+                        '__magnet_ico__' => $magnet_ico,
+                        '__magnet_name__' => $magnet_name,
+                    ]);
                 },
                 BBC\Codes::ATTR_BLOCK_LEVEL => false,
                 BBC\Codes::ATTR_AUTOLINK => false,

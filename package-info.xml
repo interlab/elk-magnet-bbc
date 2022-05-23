@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.elkarte.net/site/package-info">
+<package-info xmlns="http://www.elkarte.net/site/package-info" xmlns:elk="http://www.elkarte.net/">
+
+    <id>inter:magnetlinkbbcode</id>
+    <name>Magnet link bbcode</name>
+    <version>1.0.0</version>
+    <type>modification</type>
+
+    <install for="1.1.0 - 1.1.99">
+        <readme type="inline">This will install magnet link bbcode addon for ElkArte 1.1.x</readme>
+        <require-file name="/elk-1.1/MagnetBBC.integrate.php" destination="SUBSDIR" />
+        <require-file name="/elk-1.1/magnet-bbcode.js" destination="THEMEDIR/scripts" />
+        <require-file name="/elk-1.1/magnet-bbcode.css" destination="THEMEDIR/css" />
+        <!--
+        <require-file name="languages/MagnetBBC.english.php" destination="LANGUAGEDIR/english" />
+        <require-file name="languages/MagnetBBC.russian.php" destination="LANGUAGEDIR/russian" />
+        -->
+        <require-file name="magnet.png" destination="IMAGESDIR/bbc" />
+    
+        <hook hook="integrate_load_theme" file="SUBSDIR/MagnetBBC.integrate.php" function="MagnetBBC::integrate_load_theme" />
+        <hook hook="integrate_additional_bbc" file="SUBSDIR/MagnetBBC.integrate.php" function="MagnetBBC::integrate_additional_bbc" />
+        <hook hook="integrate_bbc_buttons" file="SUBSDIR/MagnetBBC.integrate.php" function="MagnetBBC::integrate_bbc_buttons" />
+
+        <redirect url="?action=admin;area=packages;sa=browse" timeout="750" />
+    </install>
+
+    <uninstall for="1.1.0 - 1.1.99">
+    <readme type="inline">This will uninstall magnet link bbcode addon for ElkArte 1.1.x</readme>
+        <remove-file name="SUBSDIR/MagnetBBC.integrate.php" />
+        <remove-file name="THEMEDIR/scripts/magnet-bbcode.js" />
+        <remove-file name="THEMEDIR/css/magnet-bbcode.css" />
+        <!--
+        <remove-file name="LANGUAGEDIR/english/MagnetBBC.english.php" />
+        <remove-file name="LANGUAGEDIR/russian/MagnetBBC.russian.php" />
+        -->
+        <remove-file name="IMAGESDIR/bbc/magnet.png" />
+
+        <hook reverse="true" hook="integrate_load_theme" file="SUBSDIR/MagnetBBC.integrate.php" function="MagnetBBC::integrate_load_theme" />
+        <hook reverse="true" hook="integrate_additional_bbc" file="SUBSDIR/MagnetBBC.integrate.php" function="MagnetBBC::integrate_additional_bbc" />
+        <hook reverse="true" hook="integrate_bbc_buttons" file="SUBSDIR/MagnetBBC.integrate.php" function="MagnetBBC::integrate_bbc_buttons" />
+
+        <redirect url="?action=admin;area=packages;sa=browse" timeout="750" />
+    </uninstall>
+</package-info>

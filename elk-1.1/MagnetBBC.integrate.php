@@ -20,7 +20,7 @@ class MagnetBBC
                 BBC\Codes::ATTR_CONTENT => '<img src="__magnet_ico__" />&nbsp;<a href="$1" class="new_win">__magnet_name__</a>',
                 BBC\Codes::ATTR_VALIDATE => function(&$tag, &$data, $disabled) {
                     global $settings;
-                    if (!preg_match('~^[a-z0-9]{40}$~i', $data)) {
+                    if (!preg_match('~^[a-f\d]{40}$~i', $data)) {
                         $tag[BBC\Codes::ATTR_CONTENT] = '[magnet]$1[/magnet]';
                         return;
                     }
@@ -45,7 +45,7 @@ class MagnetBBC
             [
                 // [tag=xyz]parsed content[/tag]
                 BBC\Codes::ATTR_TAG => 'magnet',
-                BBC\Codes::ATTR_TEST => '[A-Za-z0-9]{40}',
+                BBC\Codes::ATTR_TEST => '[A-Fa-f\d]{40}',
                 BBC\Codes::ATTR_TYPE => BBC\Codes::TYPE_UNPARSED_EQUALS,
                 BBC\Codes::ATTR_BEFORE => '<img src="__magnet_ico__" />&nbsp;<a href="$1" class="new_win">',
                 BBC\Codes::ATTR_AFTER => '</a>',
